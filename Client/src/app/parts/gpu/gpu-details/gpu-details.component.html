@@ -1,0 +1,98 @@
+<body>
+    <section class="page-section catalog" *ngIf="gpu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Καρτας Γραφικων</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="gpu-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center gpu-info">
+                        <div class="gpu-icon-container">
+                            <i class="fa-solid fa-gamepad fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">{{ gpu.brand }}<br>{{ gpu.model }}</h4>
+                        <span class="badge barcode-badge bg-success text-white fs-6 p-2">{{ gpu.barcode }}</span>
+                    </div>
+                    <div class="col-md-8 gpu-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μνήμη</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ gpu.memory }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Driver Έκδοση</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ gpu.driverVersion }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ gpu.serialNumber }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σχετικός Υπολογιστής</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <ng-container *ngIf="related_pcs">
+                                        <div *ngFor="let pc of related_pcs" class="related-pc-item">
+                                            <span (click)="goToRelatedPC(pc.id)" class="clickable-text">{{ pc.barcode }}</span>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="related_pcs.length == 0">
+                                        <label>Δεν έχει χρεωθεί ακόμα</label>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <ng-container *appHasRole="['Admin', 'Moderator']">
+                            <button type="button" class="btn btn-success me-2 px-4" (click)="editGPU()">
+                                <i class="fa-solid fa-user-pen"></i> Επεξεργασία
+                            </button>
+                            <button type="button" class="btn btn-danger px-4" (click)="deleteGPU()">
+                                <i class="fa-solid fa-trash"></i> Διαγραφή
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!gpu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

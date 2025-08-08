@@ -1,0 +1,186 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Προσθηκη Στελεχους</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()" enctype="multipart/form-data">
+                <div class="row">
+                    <!-- Left Column - Basic Info -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                            <h5 class="text-center pb-3">Βασικές Πληροφορίες</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Αριθμός Μητρώου:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="am" placeholder="ex. 186742">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Επίθετο:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="lastName" placeholder="ex. Πετρόπουλος">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όνομα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="firstName" placeholder="ex. Γιώργος">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Εσωτερικό Τηλέφωνο:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="phone" placeholder="ex. 1202">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Κινητό:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="mobile" placeholder="ex. 6984027642">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Email:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="email" placeholder="ex. example@gmail.com">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Φωτογραφια:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="file" class="form-control" (change)="onFileSelected($event)">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Right Column - Network Details -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                            <h5 class="text-center pb-3">Πληροφορίες Θέσης</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Βαθμός:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="rank" placeholder="ex. Λγος">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όπλο/Σώμα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="speciality" placeholder="ex. ΠΖ">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μονάδα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="unit" placeholder="ex.Λόχος Διοικήσεως">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Γραφείο:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="office" placeholder="ex.1ο Επιτελικό Γραφείο">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Θέση:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="position" placeholder="ex. Διευθυντής">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όνομα Χρήστη H/Y:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="pcUsername" placeholder="ex. ge.petropoulos">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όνομα Χρήστη ΣΗΔΑΕΔ:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="shdaedUsername" placeholder="ex. ge.petropoulos">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="component-section pb-3">
+                    <div class="row">
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                                <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                            </button>
+                            <button type="button" class="btn btn-success px-4" (click)="addEmployee()" [disabled]="employeeForm.pristine || employeeForm.invalid">
+                                <i class="fa-solid fa-save"></i> Αποθήκευση
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

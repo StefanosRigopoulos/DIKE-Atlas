@@ -1,0 +1,36 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./API/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5000
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres_dike;Port=5432;Database=mypostgredb;Username=mypostgreuser;Password=mypostgrepassword
+    depends_on:
+      - postgres_dike
+    networks:
+      - dike-atlas-network
+
+  postgres_dike:
+    image: postgres:16
+    container_name: postgres_dike
+    environment:
+      POSTGRES_USER: mypostgreuser
+      POSTGRES_PASSWORD: mypostgrepassword
+      POSTGRES_DB: mypostgredb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dike-atlas-network
+
+volumes:
+  postgres_data:
+
+networks:
+  dike-atlas-network:
+    driver: bridge

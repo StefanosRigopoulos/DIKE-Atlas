@@ -1,0 +1,118 @@
+<body>
+    <section class="page-section catalog" *ngIf="storage">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Αποθηκευτικου Χωρου</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="storage-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center storage-info">
+                        <div class="storage-icon-container">
+                            <i class="fa-solid fa-hard-drive fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">{{ storage.brand }}<br>{{ storage.model }}</h4>
+                        <span class="badge barcode-badge bg-success text-white fs-6 p-2">{{ storage.barcode }}</span>
+                    </div>
+                    <div class="col-md-8 storage-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Είδος</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ storage.type }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Διεπαφή</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ storage.interface }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Ταχύτητα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ storage.speed }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Χωρητικότητα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ storage.capacity }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <label>{{ storage.serialNumber }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σχετικός Υπολογιστής</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <ng-container *ngIf="related_pcs">
+                                        <div *ngFor="let pc of related_pcs" class="related-pc-item">
+                                            <span (click)="goToRelatedPC(pc.id)" class="clickable-text">{{ pc.barcode }}</span>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="related_pcs.length == 0">
+                                        <label>Δεν έχει χρεωθεί ακόμα</label>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <ng-container *appHasRole="['Admin', 'Moderator']">
+                            <button type="button" class="btn btn-success me-2 px-4" (click)="editStorage()">
+                                <i class="fa-solid fa-user-pen"></i> Επεξεργασία
+                            </button>
+                            <button type="button" class="btn btn-danger px-4" (click)="deleteStorage()">
+                                <i class="fa-solid fa-trash"></i> Διαγραφή
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!storage">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

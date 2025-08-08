@@ -1,0 +1,109 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Καταλογος</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <ng-container *appHasRole="['Admin', 'Moderator']">
+                    <button class="btn btn-success" *appHasRole="['Admin', 'Moderator']" (click)="goToAdd()">Προσθήκη</button>
+                </ng-container>
+                <ng-container *appHasRole="['User']">
+                    <p></p>
+                </ng-container>
+                <select class="form-select w-auto" [(ngModel)]="employeeParams.orderBy" (change)="applyFilters()">
+                    <option value="lastname" selected>Επώνυμο</option>
+                    <option value="firstname">Όνομα</option>
+                    <option value="speciality">Όπλο</option>
+                    <option value="unit">Μονάδα</option>
+                    <option value="office">Γραφείο</option>
+                </select>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <h5 class="text-center">Φίλτρα</h5>
+                    <label>Μονάδα</label>
+                    <select class="form-select mb-2" [(ngModel)]="employeeParams.unit">
+                        <option value="" selected>Όλες</option>
+                        <option *ngFor="let unit of filterUnit" [value]="unit">{{unit}}</option>
+                    </select>
+                    <label>Γραφείο</label>
+                    <select class="form-select mb-2" [(ngModel)]="employeeParams.office">
+                        <option value="" selected>Όλα</option>
+                        <option *ngFor="let office of filterOffice" [value]="office">{{office}}</option>
+                    </select>
+                    <label>Βαθμός</label>
+                    <select class="form-select mb-2" [(ngModel)]="employeeParams.rank">
+                        <option value="" selected>Όλοι</option>
+                        <option *ngFor="let rank of filterRank" [value]="rank">{{rank}}</option>
+                    </select>
+                    <label>Όπλο/Σώμα</label>
+                    <select class="form-select mb-2" [(ngModel)]="employeeParams.speciality">
+                        <option value="" selected>Όλα</option>
+                        <option *ngFor="let speciality of filterSpeciality" [value]="speciality">{{speciality}}</option>
+                    </select>
+                    <button class="btn btn-success w-100 mt-2" (click)="applyFilters()">Εφαρμογή Φίλτρων</button>
+                    <button class="btn btn-danger w-100 mt-2" (click)="resetFilters()">Εκκαθάριση</button>
+                    <button class="btn btn-secondary w-100 mt-2" (click)="goBack()">Πίσω</button>
+                </div>
+                <div class="col-md-10">
+                    <div class="row justify-content-center">
+                    <ng-container *ngFor="let employee of employees">
+                        <div class="col-md-4 col-lg-3 mb-3">
+                            <div class="catalog-item card mx-auto" (click)="goToDetails(employee.id)">
+                                <div class="card-img-wrapper rounded">
+                                    <div class="ratio ratio-1x1">
+                                        <img [src]="profilePhotos[employee.id]" (error)="onImageError($event)" class="card-img-top">
+                                    </div>
+                                </div>
+                                <div class="card-body p-1">
+                                    <h6 class="card-title text-center mb-1"> {{employee.firstName}}<br>{{employee.lastName}} </h6>
+                                    <p class="card-text text-muted text-center">{{employee.rank}} <ng-container *ngIf="employee.speciality">({{employee.speciality}})</ng-container></p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    </div>
+                    <!-- Pagination Controls -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <button 
+                            class="btn btn-secondary" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: 1 })" 
+                            [disabled]="(employeeParams!.pageNumber || 1) === 1">
+                            <h4>«</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary mx-2" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (employeeParams!.pageNumber || 1) - 1 })" 
+                            [disabled]="(employeeParams!.pageNumber || 1) === 1">
+                            <h4>‹</h4>
+                        </button>
+                        <span class="align-self-center mx-2">
+                            Σελίδα {{ employeeParams!.pageNumber || 1 }} από {{ pagination?.totalPages || 1 }}
+                        </span>
+                        <button 
+                            class="btn btn-secondary mx-2"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (employeeParams!.pageNumber || 1) + 1 })" 
+                            [disabled]="(employeeParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>›</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: pagination?.totalPages || 1 })" 
+                            [disabled]="(employeeParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>»</h4>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

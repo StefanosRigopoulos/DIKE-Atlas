@@ -1,0 +1,186 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Προσθηκη Υπολογιστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="pcForm" (ngSubmit)="addPC()" enctype="multipart/form-data">
+                <div class="row">
+                    <!-- Left Column - Basic Info -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                            <h5 class="text-center pb-3">Βασικές Πληροφορίες</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όνομα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="pcName" placeholder="ex. pc_name">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>S/N:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="serialNumber" placeholder="ex. 87G37F8UH">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μάρκα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="brand" placeholder="ex. Lenovo">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μοντέλο:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="model" placeholder="ex. ThinkCenter">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Κωδικός Διαχειριστή:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="administratorCode" placeholder="ex. local_admin">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Κωδικός BIOS:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="biosCode" placeholder="ex. bios_code">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Speccy Report:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="file" class="form-control" (change)="onFileSelected($event)" accept=".pdf">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Right Column - Network Details -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                            <h5 class="text-center pb-3">Πληροφορίες Δικτύου</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Τομέας:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="domain" placeholder="ex. ivmerarxiapz.local">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Εσωτερική IP:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="ip" placeholder="ex. 192.168.1.2">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Εξωτερική IP:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="externalIP" placeholder="ex. 192.168.1.139">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μάσκα Δικτύου:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="subnetMask" placeholder="ex. 255.255.255.0">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Πύλη:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="gateway" placeholder="ex. 192.168.1.1">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>DNS 1:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="dnS1" placeholder="ex. 8.8.8.8">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>DNS 2:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="dnS2" placeholder="ex. 0.0.0.0">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="component-section pb-3">
+                    <div class="row">
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                                <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                            </button>
+                            <button type="button" class="btn btn-success px-4" (click)="addPC()" [disabled]="pcForm.pristine || pcForm.invalid">
+                                <i class="fa-solid fa-save"></i> Αποθήκευση
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

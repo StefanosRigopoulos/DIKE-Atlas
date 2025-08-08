@@ -1,0 +1,228 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Ηλεκτρονικοι Υπολογιστες</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Controls: Add PC Button & Sorting Dropdown -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <ng-container *appHasRole="['Admin', 'Moderator']">
+                    <button class="btn btn-success" *appHasRole="['Admin', 'Moderator']" (click)="goToCreate()">Προσθήκη</button>
+                </ng-container>
+                <ng-container *appHasRole="['User']">
+                    <p></p>
+                </ng-container>
+                <select class="form-select w-auto" [(ngModel)]="pcParams.orderBy" (change)="applyFilters()">
+                    <option value="brand" selected>Μάρκα</option>
+                    <option value="model" selected>Μοντέλο</option>
+                </select>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- Filtering Sidebar -->
+                <div class="col-md-2">
+                    <h5 class="text-center">Αναζήτηση</h5>
+                    <input class="form-control mb-4" type="text" [(ngModel)]="pcParams.barcode" placeholder="ex. PC_2BF194394E" (keyup.enter)="applyFilters()">
+                    <h5 class="text-center">Φίλτρα</h5>
+                    <label>Μάρκα</label>
+                    <select class="form-select mb-2" [(ngModel)]="pcParams.brand">
+                        <option value="" selected>Όλες</option>
+                        <option *ngFor="let brand of filterBrand" [value]="brand">{{brand}}</option>
+                    </select>
+                    <label>Μοντέλο</label>
+                    <select class="form-select mb-2" [(ngModel)]="pcParams.model">
+                        <option value="" selected>Όλα</option>
+                        <option *ngFor="let model of filterModel" [value]="model">{{model}}</option>
+                    </select>
+                    <label>Τομέας</label>
+                    <select class="form-select mb-2" [(ngModel)]="pcParams.domain">
+                        <option value="" selected>Όλοι</option>
+                        <option *ngFor="let domain of filterDomain" [value]="domain">{{domain}}</option>
+                    </select>
+                    <button class="btn btn-success w-100 mt-2" (click)="applyFilters()">Εφαρμογή Φίλτρων</button>
+                    <button class="btn btn-danger w-100 mt-2" (click)="resetFilters()">Εκκαθάριση</button>
+                    <button class="btn btn-secondary w-100 mt-2" (click)="goBack()">Πίσω</button>
+                </div>
+                <!-- PC List -->
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-2">Barcode</th>
+                                <th class="col-4">Βασικά Χαρακτηριστηκά</th>
+                                <th class="col-4">Χαρακτηριστηκά Δικτύου</th>
+                                <ng-container *appHasRole="['Admin', 'Moderator']">
+                                    <th class="col-2">Ενέργειες</th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pc of pcs" class="clickable-row">
+                                <td>
+                                    <div class="row text-center">
+                                        <label>{{pc.barcode}}</label>
+                                    </div>
+                                    <div class="row text-center">
+                                        <a href="javascript:void(0)" (click)="getPCReport(pc.id)"><i class="fa-solid fa-file-pdf fa-4x" style="margin-top: 1rem; margin-bottom: 1rem;"></i></a>
+                                    </div>
+                                </td>
+                                <td (click)="goToDetails(pc.id)">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            S/N:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.serialNumber}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Μάρκα:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.brand}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Μοντέλο:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.model}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Όνομα Η/Υ:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.pcName}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Admin:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.administratorCode}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            BIOS:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.biosCode}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td (click)="goToDetails(pc.id)">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Domain:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.domain}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Εσωτερική IP:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.ip}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Εξωτερική IP:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.externalIP}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Subnet Mask:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.subnetMask}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            Gateway:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.gateway}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            DNS1:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.dnS1}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            DNS2:
+                                        </div>
+                                        <div class="col-md-7">
+                                            {{pc.dnS2}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <ng-container *appHasRole="['Admin', 'Moderator']">
+                                    <td style="padding-top: 27px; margin: 5px;">
+                                        <div class="row">
+                                            <button class="btn btn-danger btn-sm" style="width: 60px; height: 60px; margin: 20px;" (click)="deletePC(pc.id)"><i class="fa-solid fa-trash-can fa-2x"></i></button>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pagination Controls -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <button 
+                            class="btn btn-secondary" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: 1 })" 
+                            [disabled]="(pcParams!.pageNumber || 1) === 1">
+                            <h4>«</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary mx-2" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (pcParams!.pageNumber || 1) - 1 })" 
+                            [disabled]="(pcParams!.pageNumber || 1) === 1">
+                            <h4>‹</h4>
+                        </button>
+                        <span class="align-self-center mx-2">
+                            Σελίδα {{ pcParams!.pageNumber || 1 }} από {{ pagination?.totalPages || 1 }}
+                        </span>
+                        <button 
+                            class="btn btn-secondary mx-2"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (pcParams!.pageNumber || 1) + 1 })" 
+                            [disabled]="(pcParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>›</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: pagination?.totalPages || 1 })" 
+                            [disabled]="(pcParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>»</h4>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

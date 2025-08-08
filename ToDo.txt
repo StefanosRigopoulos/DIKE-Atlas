@@ -1,0 +1,27 @@
+TODO
+
+Barcode Scanning
+Generator: https://barcode.tec-it.com/en/
+Code: Linear Code-128
+Sequence: [Component Name]_[Unique ID]
+    Breakdown: Component Name   [PC, CPU, MOBO, RAM, GPU, PSU, STOR, NET, MONI...]
+               Unique ID        [First-3 GUID, Last-4 TimestampMilliseconds, Last-3 GUID]
+
+Process of Starting the Application (Development)
+1. (Docker) Start postgreSQL server.
+3. (DIKE Atlas/API) dotnet run
+2. (DIKE Atlas/Client) ng serve
+
+Process of Starting the Application (API Host)
+1. (Docker) Start postgreSQL server.
+2. (DIKE Atlas/Client) ng build
+3. (DIKE Atlas/API) dotnet run
+
+Process of Starting the Application (Container First Time)
+1. (DIKE Atlas/Client) ng build
+2. (DIKE Atlas) docker-compose up --build
+
+Process of Starting the Application (Container Rest)
+1. (DIKE Atlas/Client) ng build
+2. (DIKE Atlas) docker-compose build
+2. (DIKE Atlas) docker-compose up -d

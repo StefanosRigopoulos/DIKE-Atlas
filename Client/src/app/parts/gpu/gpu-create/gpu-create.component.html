@@ -1,0 +1,84 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Προσθηκη Καρτας Γραφικων</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="gpuForm" class="gpu-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center gpu-info">
+                        <div class="gpu-icon-container">
+                            <i class="fa-solid fa-gamepad fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Καρτα Γραφικων</h4>
+                    </div>
+                    <div class="col-md-8 gpu-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Nvidia">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. GTX 640">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μνήμη</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="memory" class="form-control" placeholder="ex. 2GB">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Driver Έκδοση</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="driverVersion" class="form-control" placeholder="ex. 27.20.1034.6">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. IUH7YF736FUY">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="createGPU()" [disabled]="gpuForm.pristine || gpuForm.invalid">
+                            <i class="fa-solid fa-save"></i> Δημιουργία
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>

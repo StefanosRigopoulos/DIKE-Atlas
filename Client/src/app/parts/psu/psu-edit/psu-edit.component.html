@@ -1,0 +1,95 @@
+<body>
+    <section class="page-section catalog" *ngIf="psu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Επεξεργασια Τροφοδοτικου</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="psuForm" class="psu-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center psu-info">
+                        <div class="psu-icon-container">
+                            <i class="fa-solid fa-power-off fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Τροφοδοτικο</h4>
+                    </div>
+                    <div class="col-md-8 psu-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Corsair">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. RMx">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Ισχύς</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="wattage" class="form-control" placeholder="ex. 350">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Πιστοποίηση</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="certification" class="form-control" placeholder="ex. 80 PLUS Gold">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. 783HFYYHSD">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="savePSU()" [disabled]="psuForm.pristine || psuForm.invalid">
+                            <i class="fa-solid fa-save"></i> Αποθήκευση
+                        </button>
+                    </div>
+                </div>
+            </form>            
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!psu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

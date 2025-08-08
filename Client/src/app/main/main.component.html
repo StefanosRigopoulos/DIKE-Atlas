@@ -1,0 +1,83 @@
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <img class="masthead-avatar mb-5" src="/assets/emblem.png" alt="DIKE_IVMP is missing..." />
+        <h1 class="masthead-heading text-uppercase mb-0">DIKE Atlas</h1>
+        <div class="divider-custom divider-light mb-5">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p class="masthead-subheading font-weight-light mb-0">
+            Καταγραφή Υλικού Ηλεκτρονικών Υπολογιστών και Χαρτογράφιση<br>
+            Δικτύου της ΔΙΚΕ (IV ΜΠ) "ΠΕΛΟΠΟΝΝΗΣΟΣ"
+        </p>
+    </div>
+</header>
+<body>
+    <!-- Catalog Section-->
+    <section class="page-section catalog" id="catalog">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Υπηρεσιες</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Catalog Grid Items-->
+            <div class="row justify-content-center" (click)="navigateToSearch()">
+                <!-- Catalog Item 1-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="catalog-item mx-auto">
+                        <div class="catalog-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="catalog-item-caption-content text-center text-white"><i class="fa-solid fa-magnifying-glass fa-5x"></i></div>
+                        </div>
+                        <img class="img-fluid" style="border-radius: 5%;" src="/assets/main/search.png" alt="SEARCH is missing..." />
+                    </div>
+                </div>
+                <!-- Catalog Item 2-->
+                <div class="col-md-6 col-lg-4 mb-5" (click)="navigateToCatalog()">
+                    <div class="catalog-item mx-auto">
+                        <div class="catalog-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="catalog-item-caption-content text-center text-white"><i class="fa-solid fa-address-book fa-5x"></i></div>
+                        </div>
+                        <img class="img-fluid" style="border-radius: 5%;" src="/assets/main/catalog.png" alt="CATALOG is missing..." />
+                    </div>
+                </div>
+                <!-- Catalog Item 3-->
+                <div class="col-md-6 col-lg-4 mb-5" (click)="navigateToParts()">
+                    <div class="catalog-item mx-auto">
+                        <div class="catalog-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="catalog-item-caption-content text-center text-white"><i class="fa-solid fa-warehouse fa-5x"></i></div>
+                        </div>
+                        <img class="img-fluid" style="border-radius: 5%;" src="/assets/main/parts.png" alt="PARTS is missing..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section-->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-white">Σχετικα</h2>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ms-auto"><p class="lead">
+                    Το DIKE Atlas είναι μία εφαρμογή με στόχο την καταγραφή και
+                    χαρτογράφιση του δικτύου και των Ηλεκτρονικών Υπολογιστών της
+                    ΔΙΚΕ (IV ΜΠ) "ΠΕΛΟΠΟΝΝΗΣΟΣ. Μέσω της εφαρμογής παρέχονται όλα
+                    τα στοιχεία των ενεργών συνδέσεων στο τοπικο δίκτυο του Στρατηγείου
+                    της Μεραρχίας καθώς και όλα τα χαρακτηριστηκά των Ηλεκτρονικών Υπολογιστών.</p>
+                </div>
+                <div class="col-lg-4 me-auto"><p class="lead">
+                    Η σχεδιαση της εφαρμογής πραγματοποιήθηκε με την χρήση εργαλείων όπως,
+                    το .NET Core 8.0 της Microsoft και την Angular 18 της Google. Επίσης,
+                    για την λειτουργία της βάσης δεδομένων επιλέχθηκε η open source PostgreSQL
+                    και για την μεταξύ τους επικοινωνία το πρωτόκολλο RESTful API.</p></div>
+            </div>
+        </div>
+    </section> 
+</body>

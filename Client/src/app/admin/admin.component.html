@@ -1,0 +1,294 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <div class="d-flex">
+                <nav class="nav flex-column p-3 vh-100">
+                    <a class="nav-link" 
+                        [class.active]="activeTab === 'users'" 
+                        (click)="setActiveTab('users')">
+                        Διαχείριση Χρηστών
+                    </a>
+                    <a class="nav-link" 
+                        [class.active]="activeTab === 'database'" 
+                        (click)="setActiveTab('database')">
+                        Διαχείριση Βάσης
+                    </a>
+                    <a class="nav-link" 
+                        [class.active]="activeTab === 'backup'" 
+                        (click)="setActiveTab('backup')">
+                        Αντίγραφα
+                    </a>
+                    <a class="nav-link" 
+                        [class.active]="activeTab === 'miscellaneous'" 
+                        (click)="setActiveTab('miscellaneous')">
+                        Διάφορα
+                    </a>
+                </nav>
+                <div class="flex-grow-1 p-4">
+                    <div *ngIf="activeTab === 'users'">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Διαχείριση Χρηστών</h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p>Εδώ μπορείτε να διαχειριστείτε τους χρήστες.</p>
+                                    <button type="submit" class="btn btn-success" style="min-width: 130px;" (click)="toggleRegister()"><i class="fa-solid fa-plus"></i> Προσθήκη</button>
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3">Όνομα Χρήστη</th>
+                                            <th class="col-3">Όνομα</th>
+                                            <th class="col-3">Επίθετο</th>
+                                            <th class="col-3">Ρόλος</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let user of users" (click)="selectUser(user)" [class.table-active]="selectedUser?.id === user.id">
+                                            <td>{{ user.userName }}</td>
+                                            <td>{{ user.firstName }}</td>
+                                            <td>{{ user.lastName }}</td>
+                                            <td>{{ user.role }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ng-container *ngIf="selectedUser">
+                                <div class="col-md-4 user-details">
+                                    <form [formGroup]="updateForm">
+                                        <div>
+                                            <h5 class="pb-2">Χαρακτηριστηκά Χρήστη</h5>
+                                            <div class="pb-2">
+                                                <label>Όνομα Χρήστη</label>
+                                                <input type="text" class="form-control" formControlName="userName" placeholder="Όνομα Χρήστη">
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Όνομα</label>
+                                                <input type="text" class="form-control" formControlName="firstName" placeholder="Όνομα">
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Επίθετο</label>
+                                                <input type="text" class="form-control" formControlName="lastName" placeholder="Επίθετο">
+                                            </div>
+                                            <div class="pb-2" *ngIf="selectedUser.role != 'Admin'">
+                                                <label>Ρόλος</label>
+                                                <select class="form-control" formControlName="role">
+                                                    <option value="User">User</option>
+                                                    <option value="Moderator">Moderator</option>
+                                                </select>
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Νέος Κωδικός</label>
+                                                <input type="password" class="form-control" formControlName="newPassword" placeholder="Νέος Κωδικός">
+                                            </div>
+                                            <div class="pt-3">
+                                                <div class="row">
+                                                    <button type="submit" class="btn btn-success" (click)="updateUser()">Αποθήκευση</button>
+                                                </div>
+                                            </div>
+                                            <div class="pt-1">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="row" style="padding-right: 2px;">
+                                                            <button type="button" class="btn btn-danger" (click)="deleteUser(selectedUser!.id)" [disabled]="this.selectedUser.role == 'Admin'">Διαγραφή</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="row" style="padding-left: 2px;">
+                                                            <button type="button" class="btn btn-secondary" (click)="selectedUser = null; this.updateForm.reset();">Άκυρο</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="registerTab">
+                                <div class="col-md-4 user-details">
+                                    <form [formGroup]="registerForm">
+                                        <div>
+                                            <h5 class="pb-2">Δημιουργία Χρήστη</h5>
+                                            <div class="pb-2">
+                                                <label>Όνομα Χρήστη</label>
+                                                <input type="text" class="form-control" formControlName="userName" placeholder="Όνομα Χρήστη">
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Όνομα</label>
+                                                <input type="text" class="form-control" formControlName="firstName" placeholder="Όνομα">
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Επίθετο</label>
+                                                <input type="text" class="form-control" formControlName="lastName" placeholder="Επίθετο">
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Role</label>
+                                                <select class="form-control" formControlName="role">
+                                                    <option value="User">User</option>
+                                                    <option value="Moderator">Moderator</option>
+                                                </select>
+                                            </div>
+                                            <div class="pb-2">
+                                                <label>Κωδικός</label>
+                                                <input type="password" class="form-control" formControlName="password" placeholder="Κωδικός">
+                                            </div>
+                                            <div class="pt-3">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="row" style="padding-right: 2px;">
+                                                            <button type="submit" class="btn btn-success" (click)="registerUser()">Δημιουργία</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="row" style="padding-left: 2px;">
+                                                            <button type="button" class="btn btn-secondary" (click)="toggleRegister()">Άκυρο</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div *ngIf="activeTab === 'database'">
+                        <h3>Διαχείριση Βάσης</h3>
+                        <p>Εξαγωγή ή διαχείριση βάσης δεδομένων</p>
+                        <h4>Εξαγωγή</h4>
+                        <div class="row">
+                            <div class="col-md-3" style="padding-top: 3px;">
+                                <strong>Ολόκληρη την βασή:</strong>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-secondary" (click)="getDatabase()">Βάση Δεδομένων</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3" style="padding-top: 3px;">
+                                <strong>Μεμονομένοι πίνακες:</strong>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row pb-1">
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('Employees')">Στελέχοι</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('PCs')">Η/Υ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pb-1">
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('CPUs')">Επεξεργαστές</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px; padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('MOBOs')">Μητρικές Κάρτες</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px; padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('RAMs')">Μνήμες</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('GPUs')">Κάρτες Γραφικών</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('PSUs')">Τροφοδοτικά</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px; padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('Storages')">Αποθηκευτικά Μέσα</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-right: 2px; padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('NetworkCards')">Κάρτες Δικτύου</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" style="padding-left: 2px;">
+                                            <button type="button" class="btn btn-secondary" (click)="getTable('Monitors')">Οθόνες</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="activeTab === 'backup'">
+                        <h3>Αντίγραφα</h3>
+                        <p>Εξαγωγή ή εισαγωγη αντιγραφου βάσης δεδομένων</p>
+                        <div class="row pt-3">
+                            <div class="col-md-3" style="padding-top: 3px;">
+                                <strong>Εξαγωγή αντιγράφου</strong>
+                            </div>
+                            <div class="col-md-7">
+                            </div>
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <button type="button" class="btn btn-secondary" (click)="exportDatabase()">Κατέβασμα</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-md-3" style="padding-top: 3px;">
+                                <strong>Εισαγωγή αντιγράφου</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row pe-2">
+                                    <input type="file" #importInput class="form-control" (change)="onImportSelected($event)" accept=".json">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <button type="button" class="btn btn-secondary" (click)="importDatabase()">Επαναφορά</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="activeTab === 'miscellaneous'">
+                        <h3>Διάφορα</h3>
+                        <p>Αλλαγή φόντου χρεωστικού</p>
+                        <div class="row pt-3">
+                            <div class="col-md-4" style="padding-top: 3px;">
+                                <strong>Φόντο Χρεωστικού</strong>
+                                <p>Αλλαγή φόντου για το χρεωστικό των Ηλεκτρονικών Υπολογιστών</p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="row pe-2">
+                                            <input type="file" #backgroundInput class="form-control" (change)="onBackgroundSelected($event)" accept=".png">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <button type="button" class="btn btn-secondary" (click)="uploadBackgroundImage()">Ανέβασμα</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

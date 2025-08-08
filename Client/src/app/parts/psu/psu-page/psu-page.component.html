@@ -1,0 +1,112 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Τροφοδοτικα Η/Υ</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Controls: Add PSU Button & Sorting Dropdown -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <ng-container *appHasRole="['Admin', 'Moderator']">
+                    <button class="btn btn-success" *appHasRole="['Admin', 'Moderator']" (click)="goToCreate()">Προσθήκη</button>
+                </ng-container>
+                <ng-container *appHasRole="['User']">
+                    <p></p>
+                </ng-container>
+                <select class="form-select w-auto" [(ngModel)]="psuParams.orderBy" (change)="applyFilters()">
+                    <option value="brand" selected>Μάρκα</option>
+                    <option value="model">Μοντέλο</option>
+                    <option value="wattageMost">Watt (Περισσότερα)</option>
+                    <option value="wattageLeast">Watt (Λιγότερα)</option>
+                </select>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- Filtering Sidebar -->
+                <div class="col-md-2">
+                    <h5 class="text-center">Αναζήτηση</h5>
+                    <input class="form-control mb-4" type="text" [(ngModel)]="psuParams.barcode" placeholder="ex. PSU_2BF194394E" (keyup.enter)="applyFilters()">
+                    <h5 class="text-center">Φίλτρα</h5>
+                    <label>Μάρκα</label>
+                    <select class="form-select mb-2" [(ngModel)]="psuParams.brand">
+                        <option value="" selected>Όλες</option>
+                        <option *ngFor="let brand of filterBrand" [value]="brand">{{brand}}</option>
+                    </select>
+                    <label>Μοντέλο</label>
+                    <select class="form-select mb-2" [(ngModel)]="psuParams.model">
+                        <option value="" selected>Όλα</option>
+                        <option *ngFor="let model of filterModel" [value]="model">{{model}}</option>
+                    </select>
+                    <button class="btn btn-success w-100 mt-2" (click)="applyFilters()">Εφαρμογή Φίλτρων</button>
+                    <button class="btn btn-danger w-100 mt-2" (click)="resetFilters()">Εκκαθάριση</button>
+                    <button class="btn btn-secondary w-100 mt-2" (click)="goBack()">Πίσω</button>
+                </div>
+                <!-- PSU List -->
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-2">Barcode</th>
+                                <th class="col-2">Μάρκα</th>
+                                <th class="col-2">Μοντέλο</th>
+                                <th class="col-2">Ισχύς</th>
+                                <ng-container *appHasRole="['Admin', 'Moderator']">
+                                    <th class="col-2">Ενέργειες</th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let psu of psus" class="clickable-row">
+                                <td (click)="goToDetails(psu.id)">{{psu.barcode}}</td>
+                                <td (click)="goToDetails(psu.id)">{{psu.brand}}</td>
+                                <td (click)="goToDetails(psu.id)">{{psu.model}}</td>
+                                <td (click)="goToDetails(psu.id)">{{psu.wattage}}</td>
+                                <ng-container *appHasRole="['Admin', 'Moderator']">
+                                    <td>
+                                        <button class="btn btn-danger btn-sm" (click)="deletePSU(psu.id)"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pagination Controls -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <button 
+                            class="btn btn-secondary" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: 1 })" 
+                            [disabled]="(psuParams!.pageNumber || 1) === 1">
+                            <h4>«</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary mx-2" 
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (psuParams!.pageNumber || 1) - 1 })" 
+                            [disabled]="(psuParams!.pageNumber || 1) === 1">
+                            <h4>‹</h4>
+                        </button>
+                        <span class="align-self-center mx-2">
+                            Σελίδα {{ psuParams!.pageNumber || 1 }} από {{ pagination?.totalPages || 1 }}
+                        </span>
+                        <button 
+                            class="btn btn-secondary mx-2"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: (psuParams!.pageNumber || 1) + 1 })" 
+                            [disabled]="(psuParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>›</h4>
+                        </button>
+                        <button 
+                            class="btn btn-secondary"
+                            style="height: 40px; padding-top: 0px;"
+                            (click)="pageChanged({ page: pagination?.totalPages || 1 })" 
+                            [disabled]="(psuParams!.pageNumber || 1) >= (pagination?.totalPages || 1)">
+                            <h4>»</h4>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

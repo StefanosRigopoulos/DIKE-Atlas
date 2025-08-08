@@ -1,0 +1,128 @@
+<body>
+    <section class="page-section catalog" *ngIf="cpu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="cpu-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center cpu-info">
+                        <div class="cpu-icon-container">
+                            <i class="fa-solid fa-microchip fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">{{ cpu.brand }}<br>{{ cpu.model }}</h4>
+                        <span class="badge barcode-badge bg-success text-white fs-6 p-2">{{ cpu.barcode }}</span>
+                    </div>
+                    <div class="col-md-8 cpu-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Πυρήνες/Νήματα</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.cores}} / {{cpu.threads}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Χαρακτηριστηκά</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.specification}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Chipset</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.chipset}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Πακέτο</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.package}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Ενσωματωμένή GPU</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.integratedGPUModel}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>{{cpu.serialNumber}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label class="form-label">Σχετικός Υπολογιστής</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <ng-container *ngIf="related_pcs">
+                                        <div *ngFor="let pc of related_pcs" class="related-pc-item">
+                                            <span (click)="goToRelatedPC(pc.id)" class="clickable-text">{{ pc.barcode }}</span>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="related_pcs.length == 0">
+                                        <label>Δεν έχει χρεωθεί ακόμα</label>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <ng-container *appHasRole="['Admin', 'Moderator']">
+                            <button type="button" class="btn btn-success me-2 px-4" (click)="editCPU()">
+                                <i class="fa-solid fa-user-pen"></i> Επεξεργασία
+                            </button>
+                            <button type="button" class="btn btn-danger px-4" (click)="deleteCPU()">
+                                <i class="fa-solid fa-trash"></i> Διαγραφή
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!cpu">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,156 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Προσθηκη Μητρικης Καρτας</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="moboForm" class="mobo-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center mobo-info">
+                        <div class="mobo-icon-container">
+                            <i class="fa-solid fa-chess-board fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Μητρικη Καρτα</h4>
+                    </div>
+                    <div class="col-md-8 mobo-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Lenovo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. SKYBAY">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Θέσεις Μνημών</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="d-flex">
+                                        <input type="text" formControlName="dramSlots" class="form-control me-2" min="1" placeholder="ex. 4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Chipset Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="chipsetVendor" class="form-control" placeholder="ex. Intel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Chipset Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="chipsetModel" class="form-control" placeholder="ex. Skylake">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">BIOS Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="biosBrand" class="form-control" placeholder="ex. Lenovo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">BIOS Έκδοση</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="biosVersion" class="form-control" placeholder="ex. FWKT41A">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">GPU Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="onBoardGPUBrand" class="form-control" placeholder="ex. Intel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">GPU Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="onBoardGPUModel" class="form-control" placeholder="ex. Q33 Express">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Network Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="onBoardNetworkAdapterBrand" class="form-control" placeholder="ex. Intel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Network Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="onBoardNetworkAdapterModel" class="form-control" placeholder="ex. I219-LM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. IUH7YF736FUY">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="createMOBO()" [disabled]="moboForm.pristine || moboForm.invalid">
+                            <i class="fa-solid fa-save"></i> Δημιουργία
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,553 @@
+<body>
+    <section class="page-section catalog" *ngIf="pc">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Υπολογιστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <!-- Left Column - PC Details -->
+                <div class="col-md-4">
+                    <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                        <h5 class="text-center pb-3">Βασικές Πληροφορίες</h5>
+                        <ul class="list-group list-group-flush" style="border-bottom: none;">
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>S/N:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.serialNumber}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Όνομα:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.pcName}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Barcode:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.barcode}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Μάρκα:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.brand}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Μοντέλο:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.model}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <h5 class="text-center pt-3 pb-3">Κωδικοί</h5>
+                        <ul class="list-group list-group-flush" style="border-bottom: none;">
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Διαχειριστής:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.administratorCode}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>BIOS:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.biosCode}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <h5 class="text-center pt-3 pb-3">Πληροφορίες Δικτύου</h5>
+                        <ul class="list-group list-group-flush" style="border-bottom: none;">
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Τομέας:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.domain}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Εσωτερική IP:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.ip}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Εξωτερική IP:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.externalIP}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Μάσκα Δικτύου:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.subnetMask}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>Πύλη:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.gateway}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>DNS 1:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.dnS1}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5">
+                                        <strong>DNS 2:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label>{{pc.dnS2}}</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <h5 class="text-center pt-3 pb-3">Σχετικό Στέλεχος</h5>
+                        <ul class="list-group list-group-flush" style="border-bottom: none;">
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <ng-container *ngIf="hasRelatedEmployees">
+                                    <div class="row pb-2 ps-2" *ngFor="let related_employee of related_employees">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-12">
+                                                <span (click)="goToEmployeeDetails(related_employee.id)" class="clickable-text">
+                                                    {{related_employee.rank}} ({{related_employee.speciality}}) {{related_employee.firstName}} {{related_employee.lastName}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="!hasRelatedEmployees">
+                                    <label style="padding-left: 10px;">Δεν έχει χρεωθεί ακόμα</label>
+                                </ng-container>
+                            </li>
+                        </ul>
+                        <h5 class="text-center pt-3 pb-3">Αναφορά Η/Υ</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="border: none; background-color: transparent;">
+                                <div class="row text-center">
+                                    <ng-container *ngIf="haveSpeccy">
+                                        <div class="col-md-6">
+                                            <a href="javascript:void(0)" (click)="getSpeccyReport(pc!.id)">
+                                                <i class="fa-solid fa-file-pdf fa-4x" style="margin-top: 1rem; margin-bottom: 1rem;"></i>
+                                                <h5>Speccy</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="javascript:void(0)" (click)="getPCReport(pc!.id)">
+                                                <i class="fa-solid fa-file-pdf fa-4x" style="margin-top: 1rem; margin-bottom: 1rem;"></i>
+                                                <h5>Atlas</h5>
+                                            </a>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="!haveSpeccy">
+                                        <a href="javascript:void(0)" (click)="getPCReport(pc!.id)">
+                                            <i class="fa-solid fa-file-pdf fa-4x" style="margin-top: 1rem; margin-bottom: 1rem;"></i>
+                                            <h5>Atlas</h5>
+                                        </a>
+                                    </ng-container>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Right Column - PC Components -->
+                <div class="col-md-8">
+                    <div class="card shadow p-3">
+                        <h4 class="text-center pb-3">Συστατικά Υπολογιστή</h4>
+                        <!-- CPU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Επεξεργαστής</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="cpus.length > 0">
+                                            <li *ngFor="let cpu of cpus" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToCPU(cpu.id)">
+                                                        <strong>{{ cpu.brand }} {{ cpu.model }}</strong><br>
+                                                        <label class="clickable">Πυρήνες/Νήματα:</label><br>
+                                                        <label class="clickable">Χαρακτηριστηκά:</label><br>
+                                                        <label class="clickable">Chipset:</label><br>
+                                                        <label class="clickable">Πακέτο:</label><br>
+                                                        <label class="clickable">Ενσωματωμένή GPU:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToCPU(cpu.id)">
+                                                        <label class="clickable">({{ cpu.barcode }})</label><br>
+                                                        <label class="clickable">{{ cpu.cores }} / {{ cpu.threads }}</label><br>
+                                                        <label class="clickable">{{ cpu.specification }}</label><br>
+                                                        <label class="clickable">{{ cpu.chipset }}</label><br>
+                                                        <label class="clickable">{{ cpu.package }}</label><br>
+                                                        <label class="clickable">{{ cpu.integratedGPUModel }}</label><br>
+                                                        <label class="clickable">{{ cpu.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="cpus.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MOBO List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Μητρική Πλακέτα</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="mobos.length > 0">
+                                            <li *ngFor="let mobo of mobos" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToMOBO(mobo.id)">
+                                                        <strong>{{ mobo.brand }} {{ mobo.model }}</strong><br>
+                                                        <label class="clickable">Θέσεις Μνημών:</label><br>
+                                                        <label class="clickable">Chipset Μάρκα:</label><br>
+                                                        <label class="clickable">Chipset Μοντέλο:</label><br>
+                                                        <label class="clickable">BIOS Μάρκα:</label><br>
+                                                        <label class="clickable">BIOS Έκδοση:</label><br>
+                                                        <label class="clickable">GPU Μάρκα:</label><br>
+                                                        <label class="clickable">GPU Μοντέλο:</label><br>
+                                                        <label class="clickable">Network Μάρκα:</label><br>
+                                                        <label class="clickable">Network Μοντέλο:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToMOBO(mobo.id)">
+                                                        <label class="clickable">({{ mobo.barcode }})</label><br>
+                                                        <label class="clickable">{{ mobo.dramSlots }}</label><br>
+                                                        <label class="clickable">{{ mobo.chipsetVendor }}</label><br>
+                                                        <label class="clickable">{{ mobo.chipsetModel }}</label><br>
+                                                        <label class="clickable">{{ mobo.biosBrand }}</label><br>
+                                                        <label class="clickable">{{ mobo.biosVersion }}</label><br>
+                                                        <label class="clickable">{{ mobo.onBoardGPUBrand }}</label><br>
+                                                        <label class="clickable">{{ mobo.onBoardGPUModel }}</label><br>
+                                                        <label class="clickable">{{ mobo.onBoardNetworkAdapterBrand }}</label><br>
+                                                        <label class="clickable">{{ mobo.onBoardNetworkAdapterModel }}</label><br>
+                                                        <label class="clickable">{{ mobo.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="mobos.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- RAM List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Μνήμη RAM</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="rams.length > 0">
+                                            <li *ngFor="let ram of rams" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToRAM(ram.id)">
+                                                        <strong>{{ ram.brand }} {{ ram.model }}</strong><br>
+                                                        <label class="clickable">Τύπος:</label><br>
+                                                        <label class="clickable">Μέγεθος:</label><br>
+                                                        <label class="clickable">Συχνότητα:</label><br>
+                                                        <label class="clickable">CAS Latency:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToRAM(ram.id)">
+                                                        <label class="clickable">({{ ram.barcode }})</label><br>
+                                                        <label class="clickable">{{ ram.type }}</label><br>
+                                                        <label class="clickable">{{ ram.size }}</label><br>
+                                                        <label class="clickable">{{ ram.frequency }}</label><br>
+                                                        <label class="clickable">{{ ram.casLatency }}</label><br>
+                                                        <label class="clickable">{{ ram.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="rams.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- GPU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Κάρτα Γραφικών</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="gpus.length > 0">
+                                            <li *ngFor="let gpu of gpus" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToGPU(gpu.id)">
+                                                        <strong>{{ gpu.brand }} {{ gpu.model }}</strong><br>
+                                                        <label class="clickable">Μνήμη:</label><br>
+                                                        <label class="clickable">Driver Έκδοση:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToGPU(gpu.id)">
+                                                        <label class="clickable">({{ gpu.barcode }})</label><br>
+                                                        <label class="clickable">{{ gpu.memory }}</label><br>
+                                                        <label class="clickable">{{ gpu.driverVersion }}</label><br>
+                                                        <label class="clickable">{{ gpu.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="gpus.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PSU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Τροφοδοτικό</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="psus.length > 0">
+                                            <li *ngFor="let psu of psus" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToPSU(psu.id)">
+                                                        <strong>{{ psu.brand }} {{ psu.model }}</strong><br>
+                                                        <label class="clickable">Ισχύς:</label><br>
+                                                        <label class="clickable">Πιστοποίηση:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToPSU(psu.id)">
+                                                        <label class="clickable">({{ psu.barcode }})</label><br>
+                                                        <label class="clickable">{{ psu.wattage }} Watts</label><br>
+                                                        <label class="clickable">{{ psu.certification }}</label><br>
+                                                        <label class="clickable">{{ psu.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="psus.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Storage List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Αποθήκευση</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="storages.length > 0">
+                                            <li *ngFor="let storage of storages" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToStorage(storage.id)">
+                                                        <strong>{{ storage.brand }} {{ storage.model }}</strong><br>
+                                                        <label class="clickable">Είδος:</label><br>
+                                                        <label class="clickable">Διεπαφή:</label><br>
+                                                        <label class="clickable">Ταχύτητα:</label><br>
+                                                        <label class="clickable">Χωρητικότητα:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToStorage(storage.id)">
+                                                        <label class="clickable">({{ storage.barcode }})</label><br>
+                                                        <label class="clickable">{{ storage.type}}</label><br>
+                                                        <label class="clickable">{{ storage.interface }}</label><br>
+                                                        <label class="clickable">{{ storage.speed }}</label><br>
+                                                        <label class="clickable">{{ storage.capacity }}</label><br>
+                                                        <label class="clickable">{{ storage.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="storages.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Network Card List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Κάρτα Δικτύου</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="networkcards.length > 0">
+                                            <li *ngFor="let networkcard of networkcards" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToNetworkCard(networkcard.id)">
+                                                        <strong>{{ networkcard.brand }} {{ networkcard.model }}</strong><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToNetworkCard(networkcard.id)">
+                                                        <label class="clickable">({{ networkcard.barcode }})</label><br>
+                                                        <label class="clickable">{{ networkcard.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="networkcards.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Monitor List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Οθόνη</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="monitors.length > 0">
+                                            <li *ngFor="let monitor of monitors" class="list-group-item clickable" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6 clickable" (click)="goToMonitor(monitor.id)">
+                                                        <strong>{{ monitor.brand }} {{ monitor.model }}</strong><br>
+                                                        <label class="clickable">Ανάλυση:</label><br>
+                                                        <label class="clickable">Ίντσες:</label><br>
+                                                        <label class="clickable">Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-6 clickable" (click)="goToMonitor(monitor.id)">
+                                                        <label class="clickable">({{ monitor.barcode }})</label><br>
+                                                        <label class="clickable">{{ monitor.resolution }}</label><br>
+                                                        <label class="clickable">{{ monitor.inches }}"</label><br>
+                                                        <label class="clickable">{{ monitor.serialNumber }}</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="monitors.length <= 0">
+                                            <li class="list-group-item text-center" style="background-color: #f5f8ff;">
+                                                <i class="fa-solid fa-minus fa-2x"></i>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Buttons -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                                        <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                                    </button>
+                                    <ng-container *appHasRole="['Admin', 'Moderator']">
+                                        <button type="button" class="btn btn-success me-2 px-4" (click)="editPC()">
+                                            <i class="fa-solid fa-user-pen"></i> Επεξεργασία
+                                        </button>
+                                        <button type="button" class="btn btn-danger px-4" (click)="deletePC()">
+                                            <i class="fa-solid fa-trash"></i> Διαγραφή
+                                        </button>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!pc">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Υπολογιστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του συστήματος</h5>
+        </div>
+    </section>
+</body>

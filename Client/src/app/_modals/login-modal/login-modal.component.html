@@ -1,0 +1,37 @@
+<div class="login-modal card shadow p-4 mx-auto">
+    <h3 class="text-center mb-4 fw-bold">Είσοδος</h3>
+    <form [formGroup]="loginForm" id="msform" autocomplete="off" class="d-flex flex-column align-items-center">
+        <div class="mb-3 w-100 position-relative">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Όνομα Χρήστη"
+                  [formControl]="$any(loginForm.controls['username'])"
+                  name="username"
+                  required/>
+            </div>
+        </div>
+        <div class="mb-3 w-100 position-relative">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Κωδικός"
+                  [formControl]="$any(loginForm.controls['password'])"
+                  name="password"
+                  required/>
+            </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success py-2 mt-3 fw-bold"
+          (click)="submit()"
+          [ngClass]="{ 'shake-error': isError, 'btn-error': isError }"
+          [disabled]="loginForm.invalid">Sign In</button>
+    </form>
+</div>

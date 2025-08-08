@@ -1,0 +1,205 @@
+<body>
+    <section class="page-section catalog" *ngIf="employee">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Στελέχους</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="profile-card shadow-lg">
+                <form [formGroup]="employeeForm" enctype="multipart/form-data">
+                    <div class="row g-0">
+                        <div class="col-md-4 p-4">
+                            <div class="card p-3 mb-4">
+                                <h5>Βασικές Πληροφορίες</h5>
+                                <hr>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>ΑΜ:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="am">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Όνομα:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="firstName">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Επίθετο:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="lastName">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Βαθμός:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="rank">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Όπλο/Σώμα:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="speciality">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Μονάδα:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="unit">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Γραφείο:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="office">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-4">
+                                        <strong>Θέση:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" formControlName="position">
+                                    </div>
+                                </div>
+                                <div class="row ps-1">
+                                    <div class="col-md-4">
+                                        <strong>Φωτογραφια:</strong>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="file" #fileInput class="form-control" (change)="onFileSelected($event)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 pt-4">
+                            <div class="card p-3 mb-4">
+                                <h5>Στοιχεία Επικοινωνίας</h5>
+                                <hr>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-5">
+                                        <strong>Τηλέφωνο:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" formControlName="phone">
+                                    </div>
+                                </div>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-5">
+                                        <strong>Κινητό:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" formControlName="mobile">
+                                    </div>
+                                </div>
+                                <div class="row ps-1">
+                                    <div class="col-md-5">
+                                        <strong>Email:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" formControlName="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card p-3">
+                                <h5>Στοιχεία Συστήματος</h5>
+                                <hr>
+                                <div class="row ps-1 pb-2">
+                                    <div class="col-md-5">
+                                        <strong>Χρήστης Η/Υ:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" formControlName="pcUsername">
+                                    </div>
+                                </div>
+                                <div class="row ps-1">
+                                    <div class="col-md-5">
+                                        <strong>Χρήστης ΣΗΔΑΕΔ:</strong>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" formControlName="shdaedUsername">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-4">
+                            <div class="card p-3 mb-4">
+                                <h5>Χρεωμένα Συστήματα</h5>
+                                <hr>
+                                <div class="row pb-2 ps-2" *ngFor="let related_pc of related_pcs">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-10">
+                                            <span><strong>{{related_pc.pcName}}</strong> ({{related_pc.barcode}})</span>
+                                        </div>
+                                        <div class="col-md-2 text-center">
+                                            <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removePC(employee.id, related_pc.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center align-items-center pt-2">
+                                    <button class="btn btn-secondary"
+                                        style="width: 150px; font-size: 20px;"
+                                        (click)="toggleSelection()">
+                                            <i class="fa-solid fa-plus rotate-icon" [class.rotated-add]="showPCSelection"></i>
+                                    </button>
+                                </div>
+                                <div *ngIf="showPCSelection" class="mt-2 position-relative">
+                                    <input type="text"
+                                            class="form-control"
+                                            [(ngModel)]="pcSearch"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (input)="filtered()"
+                                            placeholder="Πληκτρολογήστε το barcode σας...">
+                                </div>
+                            </div>
+                            <div *ngIf="showPCSelection" class="mt-2 position-relative">
+                                <ul *ngIf="filteredPCs.length > 0" class="list-group dropdown-menu show">
+                                    <li *ngFor="let pc of filteredPCs"
+                                        class="list-group-item list-group-item-action clickable"
+                                        (click)="assignPC(pc.id)">
+                                        {{ pc.barcode }} - [{{ pc.brand }} {{ pc.model }}]
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center profile-actions m-4">
+                            <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                                <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                            </button>
+                            <button type="button" class="btn btn-success px-4" (click)="saveEmployee()" [disabled]="employeeForm.pristine || employeeForm.invalid">
+                                <i class="fa-solid fa-save"></i> Αποθήκευση
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!employee">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Στελέχους</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του συστήματος</h5>
+        </div>
+    </section>
+</body>

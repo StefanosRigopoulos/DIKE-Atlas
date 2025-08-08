@@ -1,0 +1,183 @@
+<body>
+    <section class="page-section catalog" *ngIf="employee">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Στελέχους</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="profile-card shadow-lg">
+                <div class="row g-0">
+                    <div class="col-md-4 p-4 text-center">
+                        <div class="card">
+                            <div class="ratio ratio-1x1">
+                                <img [src]="profilePhoto" (error)="onImageError($event)" class="card-img-top p-2" style="border-radius: 20px;">
+                            </div>
+                            <h3 class="mt-3">{{employee.firstName}} {{employee.lastName}}</h3>
+                            <p class="text-muted">{{employee.rank}} <ng-container *ngIf="employee.speciality">({{employee.speciality}})</ng-container></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pt-4">
+                        <div class="card p-3 mb-4">
+                            <h5>Βασικές Πληροφορίες</h5>
+                            <hr>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Αριθμός Μητρώου:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.am">{{employee.am}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Όνομα:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.firstName">{{employee.firstName}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Επίθετο:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.lastName">{{employee.lastName}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Βαθμός:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.rank">{{employee.rank}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Όπλο/Σώμα:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.speciality">{{employee.speciality}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Μονάδα:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.unit">{{employee.unit}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Γραφείο:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.office">{{employee.office}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Θέση:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.position">{{employee.position}}</ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card p-3">
+                            <h5>Στοιχεία Επικοινωνίας</h5>
+                            <hr>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Τηλέφωνο:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.phone">{{employee.phone}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Κινητό:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.mobile">{{employee.mobile}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-5">
+                                    <strong>Email:</strong>
+                                </div>
+                                <div class="col-md-7">
+                                    <ng-container *ngIf="employee.email">{{employee.email}}</ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-4">
+                        <div class="card p-3 mb-4">
+                            <h5>Στοιχεία Συστήματος</h5>
+                            <hr>
+                            <div class="row ps-1">
+                                <div class="col-md-6">
+                                    <strong>Χρήστης Η/Υ:</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <ng-container *ngIf="employee.pcUsername">{{employee.pcUsername}}</ng-container>
+                                </div>
+                            </div>
+                            <div class="row ps-1">
+                                <div class="col-md-6">
+                                    <strong>Χρήστης ΣΗΔΑΕΔ:</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <ng-container *ngIf="employee.shdaedUsername">{{employee.shdaedUsername}}</ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card p-3 mb-4">
+                            <h5>Χρεωμένα Συστήματα</h5>
+                            <hr>
+                            <ng-container *ngIf="hasRelatedPCs">
+                                <div class="row pb-2 ps-2" *ngFor="let related_pc of related_pcs">
+                                    <span (click)="goToPCDetails(related_pc.id)" class="clickable-text"><strong>{{related_pc.pcName}}</strong> ({{related_pc.barcode}})</span>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!hasRelatedPCs">
+                                <div class="row ps-1 align-items-center">
+                                    <span>Δεν έχει καταχωρηθεί κάποιο σύστημα</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="text-center m-4">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <ng-container *appHasRole="['Admin', 'Moderator']">
+                            <button type="button" class="btn btn-success me-2 px-4" (click)="editProfile()">
+                                <i class="fa-solid fa-user-pen"></i> Επεξεργασία
+                            </button>
+                            <button type="button" class="btn btn-danger px-4" (click)="deleteProfile()">
+                                <i class="fa-solid fa-trash"></i> Διαγραφή
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!employee">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Στελέχους</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του συστήματος</h5>
+        </div>
+    </section>
+</body>

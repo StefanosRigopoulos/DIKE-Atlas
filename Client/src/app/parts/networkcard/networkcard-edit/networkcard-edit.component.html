@@ -1,0 +1,75 @@
+<body>
+    <section class="page-section catalog" *ngIf="networkcard">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Επεξεργασια Καρτας Δικτυου</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="networkcardForm" class="networkcard-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center networkcard-info">
+                        <div class="networkcard-icon-container">
+                            <i class="fa-solid fa-ethernet fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Καρτα Δικτυου</h4>
+                    </div>
+                    <div class="col-md-8 networkcard-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Realtek">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. RTL8139/810x">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. 783HFYYHSD">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="saveNetworkCard()" [disabled]="networkcardForm.pristine || networkcardForm.invalid">
+                            <i class="fa-solid fa-save"></i> Αποθήκευση
+                        </button>
+                    </div>
+                </div>
+            </form>            
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!networkcard">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

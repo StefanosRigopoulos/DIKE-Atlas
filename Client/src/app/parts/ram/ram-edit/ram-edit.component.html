@@ -1,0 +1,115 @@
+<body>
+    <section class="page-section catalog" *ngIf="ram">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Επεξεργασια Μνημης</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="ramForm" class="ram-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center ram-info">
+                        <div class="ram-icon-container">
+                            <i class="fa-solid fa-memory fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Μνημη</h4>
+                    </div>
+                    <div class="col-md-8 ram-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Corsair">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. Vangeance">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Τύπος</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="type" class="form-control" placeholder="ex. DDR4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μέγεθος</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="size" class="form-control" placeholder="ex. 8GB">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Συχνότητα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="frequency" class="form-control" placeholder="ex. DDR4-2133 (1066 MHz)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">CAS Latency</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="casLatency" class="form-control" placeholder="ex. 15-15-15-36">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. 783HFYYHSD">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="saveRAM()" [disabled]="ramForm.pristine || ramForm.invalid">
+                            <i class="fa-solid fa-save"></i> Αποθήκευση
+                        </button>
+                    </div>
+                </div>
+            </form>            
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!ram">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του επεξεργαστή</h5>
+        </div>
+    </section>
+</body>

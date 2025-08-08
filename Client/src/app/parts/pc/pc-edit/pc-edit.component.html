@@ -1,0 +1,920 @@
+<body>
+    <section class="page-section catalog" *ngIf="pc">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Επεξεργασια Υπολογιστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <!-- Left Column - PC Details -->
+                <div class="col-md-4">
+                    <div class="card shadow p-3 mb-3" style="background-color: #eff1f3;">
+                        <form [formGroup]="pcForm" enctype="multipart/form-data">
+                            <h5 class="text-center pb-3">Βασικές Πληροφορίες</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>S/N:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. 783HFYYHSD">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Όνομα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="pcName">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Barcode:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" value="{{pc.barcode}}" disabled>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μάρκα:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="brand">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μοντέλο:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="model">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h5 class="text-center pt-3 pb-3">Κωδικοί</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Διαχειριστής:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="administratorCode">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>BIOS:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="biosCode">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h5 class="text-center pt-3 pb-3">Πληροφορίες Δικτύου</h5>
+                            <ul class="list-group list-group-flush" style="border-bottom: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Τομέας:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="domain">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Εσωτερική IP:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="ip">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Εξωτερική IP:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="externalIP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Μάσκα Δικτύου:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="subnetMask">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>Πύλη:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="gateway">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>DNS 1:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="dnS1">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-5">
+                                            <strong>DNS 2:</strong>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" formControlName="dnS2">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h5 class="text-center pt-3 pb-3">Σχετικό Στέλεχος</h5>
+                            <ul class="list-group list-group-flush" style="border: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <div class="row pb-2" *ngFor="let employee of employees">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-10">
+                                                <span>
+                                                    <strong>{{employee.rank}} ({{employee.speciality}}) {{employee.firstName}} {{employee.lastName}}</strong>
+                                                    <br>{{employee.position}} {{employee.office}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2 text-center">
+                                                <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeEmployee(employee.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center align-items-center pt-2">
+                                        <button class="btn btn-secondary"
+                                            style="width: 150px; font-size: 18px;"
+                                            (click)="toggleSelection('Employee')">
+                                                <i class="fa-solid fa-plus rotate-icon" [class.rotated-add]="showEmployeeSelection"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="showEmployeeSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="employeeSearch"
+                                                [ngModelOptions]="{standalone: true}"
+                                                (input)="filtered('Employee')"
+                                                placeholder="Πληκτρολογήστε το επίθετο σας...">
+                                    </div>
+                                    <div *ngIf="showEmployeeSelection" class="mt-2 position-relative">
+                                        <ul *ngIf="filteredEmployees.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let employee of filteredEmployees"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignEmployee(employee.id)">
+                                                {{employee.rank}} ({{employee.speciality}}) {{employee.firstName}} {{employee.lastName}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h5 class="text-center pt-3 pb-3">Αναφορά Η/Υ</h5>
+                            <ul class="list-group list-group-flush" style="border: none;">
+                                <li class="list-group-item" style="border: none; background-color: transparent;">
+                                    <input type="file" #reportInput class="form-control" (change)="onFileSelected($event)">
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <!-- Right Column - PC Components -->
+                <div class="col-md-8">
+                    <div class="card shadow p-3">
+                        <h4 class="text-center pb-3">Συστατικά Υπολογιστή</h4>
+                        <!-- CPU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Επεξεργαστής</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="cpus.length > 0">
+                                            <li *ngFor="let cpu of cpus" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ cpu.brand }} {{ cpu.model }}</strong><br>
+                                                        <label>Πυρήνες/Νήματα:</label><br>
+                                                        <label>Χαρακτηριστηκά:</label><br>
+                                                        <label>Chipset:</label><br>
+                                                        <label>Πακέτο:</label><br>
+                                                        <label>Ενσωματωμένή GPU:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ cpu.barcode }})</label><br>
+                                                        <label>{{ cpu.cores }} / {{ cpu.threads }}</label><br>
+                                                        <label>{{ cpu.specification }}</label><br>
+                                                        <label>{{ cpu.chipset }}</label><br>
+                                                        <label>{{ cpu.package }}</label><br>
+                                                        <label>{{ cpu.integratedGPUModel }}</label><br>
+                                                        <label>{{ cpu.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeCPU(cpu.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('CPU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showCPUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddCPU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="cpus.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('CPU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showCPUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddCPU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showCPUSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="cpuSearch"
+                                                (input)="filtered('CPU')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredCPUs.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let cpu of filteredCPUs"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignCPU(cpu.id)">
+                                                {{ cpu.barcode }} - [{{ cpu.brand }} {{ cpu.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MOBO List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Μητρική Πλακέτα</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="mobos.length > 0">
+                                            <li *ngFor="let mobo of mobos" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ mobo.brand }} {{ mobo.model }}</strong><br>
+                                                        <label>Θέσεις Μνημών:</label><br>
+                                                        <label>Chipset Μάρκα:</label><br>
+                                                        <label>Chipset Μοντέλο:</label><br>
+                                                        <label>BIOS Μάρκα:</label><br>
+                                                        <label>BIOS Έκδοση:</label><br>
+                                                        <label>GPU Μάρκα:</label><br>
+                                                        <label>GPU Μοντέλο:</label><br>
+                                                        <label>Network Μάρκα:</label><br>
+                                                        <label>Network Μοντέλο:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ mobo.barcode }})</label><br>
+                                                        <label>{{ mobo.dramSlots }}</label><br>
+                                                        <label>{{ mobo.chipsetVendor }}</label><br>
+                                                        <label>{{ mobo.chipsetModel }}</label><br>
+                                                        <label>{{ mobo.biosBrand }}</label><br>
+                                                        <label>{{ mobo.biosVersion }}</label><br>
+                                                        <label>{{ mobo.onBoardGPUBrand }}</label><br>
+                                                        <label>{{ mobo.onBoardGPUModel }}</label><br>
+                                                        <label>{{ mobo.onBoardNetworkAdapterBrand }}</label><br>
+                                                        <label>{{ mobo.onBoardNetworkAdapterModel }}</label><br>
+                                                        <label>{{ mobo.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeMOBO(mobo.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('MOBO')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showMOBOSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddMOBO()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="mobos.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('MOBO')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showMOBOSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddMOBO()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showMOBOSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="moboSearch"
+                                                (input)="filtered('MOBO')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredMOBOs.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let mobo of filteredMOBOs"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignMOBO(mobo.id)">
+                                                {{ mobo.barcode }} - [{{ mobo.brand }} {{ mobo.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- RAM List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Μνήμη RAM</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="rams.length > 0">
+                                            <li *ngFor="let ram of rams" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ ram.brand }} {{ ram.model }}</strong><br>
+                                                        <label>Τύπος:</label><br>
+                                                        <label>Μέγεθος:</label><br>
+                                                        <label>Συχνότητα:</label><br>
+                                                        <label>CAS Latency:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ ram.barcode }})</label><br>
+                                                        <label>{{ ram.type }}</label><br>
+                                                        <label>{{ ram.size }}</label><br>
+                                                        <label>{{ ram.frequency }}</label><br>
+                                                        <label>{{ ram.casLatency }}</label><br>
+                                                        <label>{{ ram.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeRAM(ram.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('RAM')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showRAMSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddRAM()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="rams.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('RAM')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showRAMSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddRAM()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showRAMSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="ramSearch"
+                                                (input)="filtered('RAM')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredRAMs.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let ram of filteredRAMs"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignRAM(ram.id)">
+                                                {{ ram.barcode }} - [{{ ram.brand }} {{ ram.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- GPU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Κάρτα Γραφικών</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="gpus.length > 0">
+                                            <li *ngFor="let gpu of gpus" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ gpu.brand }} {{ gpu.model }}</strong><br>
+                                                        <label>Μνήμη:</label><br>
+                                                        <label>Driver Έκδοση:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ gpu.barcode }})</label><br>
+                                                        <label>{{ gpu.memory }}</label><br>
+                                                        <label>{{ gpu.driverVersion }}</label><br>
+                                                        <label>{{ gpu.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeGPU(gpu.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('GPU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showGPUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddGPU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="gpus.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('GPU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showGPUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddGPU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showGPUSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="gpuSearch"
+                                                (input)="filtered('GPU')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredGPUs.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let gpu of filteredGPUs"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignGPU(gpu.id)">
+                                                {{ gpu.barcode }} - [{{ gpu.brand }} {{ gpu.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PSU List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Τροφοδοτικό</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="psus.length > 0">
+                                            <li *ngFor="let psu of psus" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ psu.brand }} {{ psu.model }}</strong><br>
+                                                        <label>Ισχύς:</label><br>
+                                                        <label>Πιστοποίηση:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ psu.barcode }})</label><br>
+                                                        <label>{{ psu.wattage }} Watts</label><br>
+                                                        <label>{{ psu.certification }}</label><br>
+                                                        <label>{{ psu.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removePSU(psu.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('PSU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showPSUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddPSU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="psus.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('PSU')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showPSUSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddPSU()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showPSUSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="psuSearch"
+                                                (input)="filtered('PSU')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredPSUs.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let psu of filteredPSUs"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignPSU(psu.id)">
+                                                {{ psu.barcode }} - [{{ psu.brand }} {{ psu.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Storage List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Αποθήκευση</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="storages.length > 0">
+                                            <li *ngFor="let storage of storages" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ storage.brand }} {{ storage.model }}</strong><br>
+                                                        <label>Είδος:</label><br>
+                                                        <label>Διεπαφή:</label><br>
+                                                        <label>Ταχύτητα:</label><br>
+                                                        <label>Χωρητικότητα:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ storage.barcode }})</label><br>
+                                                        <label>{{ storage.type}}</label><br>
+                                                        <label>{{ storage.interface }}</label><br>
+                                                        <label>{{ storage.speed }}</label><br>
+                                                        <label>{{ storage.capacity }}</label><br>
+                                                        <label>{{ storage.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeStorage(storage.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('Storage')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showStorageSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddStorage()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="storages.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('Storage')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showStorageSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddStorage()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showStorageSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="storageSearch"
+                                                (input)="filtered('Storage')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredStorages.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let storage of filteredStorages"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignStorage(storage.id)">
+                                                {{ storage.barcode }} - [{{ storage.brand }} {{ storage.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Network Card List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Κάρτα Δικτύου</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="networkcards.length > 0">
+                                            <li *ngFor="let networkcard of networkcards" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ networkcard.brand }} {{ networkcard.model }}</strong><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ networkcard.barcode }})</label><br>
+                                                        <label>{{ networkcard.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeNetworkCard(networkcard.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('NetworkCard')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showNetworkCardSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddNetworkCard()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="networkcards.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('NetworkCard')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showNetworkCardSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddNetworkCard()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showNetworkCardSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="networkcardSearch"
+                                                (input)="filtered('NetworkCard')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredNetworkCards.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let networkcard of filteredNetworkCards"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignNetworkCard(networkcard.id)">
+                                                {{ networkcard.barcode }} - [{{ networkcard.brand }} {{ networkcard.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Monitor List -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="component-title">Οθόνη</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="list-group">
+                                        <ng-container *ngIf="monitors.length > 0">
+                                            <li *ngFor="let monitor of monitors" class="list-group-item" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <strong>{{ monitor.brand }} {{ monitor.model }}</strong><br>
+                                                        <label>Ανάλυση:</label><br>
+                                                        <label>Ίντσες:</label><br>
+                                                        <label>Σειριακός Αριθμός:</label>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label>({{ monitor.barcode }})</label><br>
+                                                        <label>{{ monitor.resolution }}</label><br>
+                                                        <label>{{ monitor.inches }}"</label><br>
+                                                        <label>{{ monitor.serialNumber }}</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="align-content: center;">
+                                                        <button class="btn btn-danger btn-sm" style="width: 55px; height: 55px;" (click)="removeMonitor(monitor.id)"><i class="fa-solid fa-link-slash fa-2x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('Monitor')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showMonitorSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddMonitor()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                        <ng-container *ngIf="monitors.length <= 0">
+                                            <li class="list-group-item p-0" style="background-color: #f5f8ff;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-end"
+                                                            (click)="toggleSelection('Monitor')">
+                                                            <i class="fa-solid fa-link fa-2x rotate-icon" [class.rotated-link]="showMonitorSelection"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex py-2 clickable justify-content-center align-items-center border-start"
+                                                            (click)="goToAddMonitor()">
+                                                            <i class="fa-solid fa-plus fa-2x"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ng-container>
+                                    </ul>
+                                    <div *ngIf="showMonitorSelection" class="mt-2 position-relative">
+                                        <input type="text"
+                                                class="form-control"
+                                                [(ngModel)]="monitorSearch"
+                                                (input)="filtered('Monitor')"
+                                                placeholder="Πληκτρολογήστε το barcode σας...">
+                                        <ul *ngIf="filteredMonitors.length > 0" class="list-group dropdown-menu show">
+                                            <li *ngFor="let monitor of filteredMonitors"
+                                                class="list-group-item list-group-item-action clickable"
+                                                (click)="assignMonitor(monitor.id)">
+                                                {{ monitor.barcode }} - [{{ monitor.brand }} {{ monitor.model }}]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Buttons -->
+                        <div class="component-section pb-4">
+                            <div class="row">
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                                        <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                                    </button>
+                                    <button type="button" class="btn btn-success me-2 px-4" (click)="savePC()" [disabled]="pcForm.pristine || pcForm.invalid">
+                                        <i class="fa-solid fa-save"></i> Αποθήκευση
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section catalog" *ngIf="!pc">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Λεπτομερειες Υπολογιστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h5 class="text-center">Υπήρξε πρόβλημα κατά την φόρτωση των πληροφοριών του συστήματος</h5>
+        </div>
+    </section>
+</body>

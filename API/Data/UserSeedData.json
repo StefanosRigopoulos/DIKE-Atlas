@@ -1,0 +1,20 @@
+[
+    {
+        "UserName": "admin",
+        "FirstName": "Adminstrator",
+        "LastName": "Platform",
+        "Role": "Admin"
+    },
+    {
+        "UserName": "mod",
+        "FirstName": "Moderator",
+        "LastName": "Platform",
+        "Role": "Moderator"
+    },
+    {
+        "UserName": "user",
+        "FirstName": "Guest",
+        "LastName": "Platform",
+        "Role": "User"
+    }
+]

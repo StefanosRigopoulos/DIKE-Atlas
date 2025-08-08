@@ -1,0 +1,117 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4">Προσθηκη Επεξεργαστη</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form [formGroup]="cpuForm" class="cpu-details-card shadow rounded">
+                <div class="row" style="min-height: 300px;">
+                    <div class="col-md-4 text-center cpu-info">
+                        <div class="cpu-icon-container">
+                            <i class="fa-solid fa-microchip fa-4x"></i>
+                        </div>
+                        <h4 class="mt-2 text-uppercase">Επεξεργαστης</h4>
+                    </div>
+                    <div class="col-md-8 cpu-form-section">
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μάρκα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="brand" class="form-control" placeholder="ex. Intel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Μοντέλο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="model" class="form-control" placeholder="ex. Core i5 6400">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Πυρήνες/Νήματα</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="d-flex">
+                                        <input type="text" formControlName="cores" class="form-control me-2" min="1" placeholder="ex. 2">
+                                        <input type="text" formControlName="threads" class="form-control" min="1" placeholder="ex. 4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Χαρακτηριστηκά</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="specification" class="form-control" placeholder="ex. i5-6400 @2.70GHz">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Chipset</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="chipset" class="form-control" placeholder="ex. Skylake">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Πακέτο</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="package" class="form-control" placeholder="ex. Socket 1151 LGA">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Ενσωματωμένή GPU</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="integratedGPUModel" class="form-control" placeholder="ex. HD Graphics 530">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <label class="form-label">Σειριακός Αριθμός</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" formControlName="serialNumber" class="form-control" placeholder="ex. IUH7YF736FUY">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-secondary me-2 px-4" (click)="goBack()">
+                            <i class="fa-solid fa-arrow-left-long"></i> Πίσω
+                        </button>
+                        <button type="button" class="btn btn-success me-2 px-4" (click)="createCPU()" [disabled]="cpuForm.pristine || cpuForm.invalid">
+                            <i class="fa-solid fa-save"></i> Δημιουργία
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>

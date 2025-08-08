@@ -1,0 +1,163 @@
+<body>
+    <section class="page-section catalog">
+        <div class="container pt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Αναζητηση</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fa fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+        <div class="container my-4" style="max-width: 1100px;">
+            <div class="row mb-3">
+                <div class="col-md-10">
+                    <input
+                    type="text"
+                    [(ngModel)]="searchTerm"
+                    class="form-control"
+                    placeholder="Πληκτρολογίστε για αναζήτηση..."
+                    (keydown.enter)="onSearch()"
+                    (input)="foundNothing = false"/>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100" (click)="onSearch()">Αναζήτηση</button>
+                </div>
+            </div>
+            <div *ngIf="foundNothing" class="alert alert-info">
+                Δεν βρέθηκαν αποτελέσματα για "{{ searchTerm }}"
+            </div>
+            <div class="row g-3">
+                <ng-container *ngIf="employeeResults.length > 0">
+                    <h5 class="text-primary mb-3">Προσωπικό</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of employeeResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="pcResults.length > 0">
+                    <h5 class="text-primary">Ηλεκτρονικοί Υπολογιστές</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of pcResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="cpuResults.length > 0">
+                    <h5 class="text-primary">Επεξεργαστές</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of cpuResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="moboResults.length > 0">
+                    <h5 class="text-primary">Μητρικές Κάρτες</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of moboResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="ramResults.length > 0">
+                    <h5 class="text-primary">Μνήμες</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of ramResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="gpuResults.length > 0">
+                    <h5 class="text-primary">Κάρτες Γραφικών</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of gpuResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="psuResults.length > 0">
+                    <h5 class="text-primary">Τροφοδοτικά</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of psuResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="storageResults.length > 0">
+                    <h5 class="text-primary">Αποθηκευτικά Μέσα</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of storageResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="networkcardResults.length > 0">
+                    <h5 class="text-primary">Κάρτες Δικτύου</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of networkcardResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monitorResults.length > 0">
+                    <h5 class="text-primary">Οθόνες</h5>
+                    <hr style="margin: 0px;">
+                    <div class="col-md-6" *ngFor="let result of monitorResults">
+                        <div class="card h-100 clickable" role="button" (click)="goToDetails(result)">
+                            <div class="card-body">
+                                <h6 class="text-muted">{{ toGreek(result) }}</h6>
+                                <h5 class="card-title mb-2">{{ result.title }}</h5>
+                                <p class="card-text text-secondary">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </section>
+</body>
